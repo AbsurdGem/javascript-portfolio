@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Morgan Moore's personal portfolio">
+    <title>Morgan Moore Portfolio</title>
+</head>
+
+<body>
+
+    <!-- Personalized welcome message -->
+    <h1 id="welcomeMessage">Welcome to My Portfolio</h1>
+  
+    <!-- Navigation menu -->
+    <nav>
+        <a href="#about">About</a> |
+        <a href="#projects">Projects</a> |
+        <a href="#contact">Contact</a>
+    </nav>  
+
+
+    <!-- Main page content -->
+    <main>
+
+        <!-- About section -->
+        <section id="about">
+            <h2>About</h2>
+            <p>
+                My name is Morgan Moore, and I am a Software Development student at ECPI University.
+                I am interested in programming, artificial intelligence, and machine learning.
+                I enjoy learning new technologies and building projects that help me develop my skills.
+            </p>
+        </section>
+
+              <!-- Projects section -->
+        <section id="projects">
+            <h2>Projects</h2>
+            <p>Here are a few projects I have worked on:</p>
+
+                      <!-- Project 1 -->
+            <a href="https://github.com/AbsurdGem/Heart-Disease-Risk-Prediction" target="_blank">
+                <img src="https://via.placeholder.com/150"
+                     alt="Heart Disease Risk Prediction project"
+                     width="150">
+            </a>
+
+                      <!-- Project 2 -->
+            <a href="https://github.com/AbsurdGem/StudySprint" target="_blank">
+                <img src="https://via.placeholder.com/150"
+                     alt="StudySprint mobile application project"
+                     width="150">
+            </a>
+
+                      <!-- Project 3 -->
+            <a href="https://github.com/AbsurdGem/RolodexContactManager" target="_blank">
+                <img src="https://via.placeholder.com/150"
+                     alt="Rolodex Contact Manager project"
+                     width="150">
+            </a>
+        </section>
+
+
+              <!-- Contact section -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Use the form below to send me a message.</p>
+
+            <form>
+                              <label for="senderName">Name:</label><br>
+                <input type="text" id="senderName" name="senderName"><br><br>
+
+                              <label for="email">Email Address:</label><br>
+                <input type="email" id="email" name="email"><br><br>
+
+                              <label for="subject">Subject:</label><br>
+                <input type="text" id="subject" name="subject"><br><br>
+
+                              <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="5" cols="40"></textarea><br><br>
+
+                              <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+      <!-- JavaScript for personalized user interaction -->
+    <script>
+        let userName = prompt("What is your name?");
+
+        if (userName) {
+            document.getElementById("welcomeMessage").textContent =
+                "Welcome to my portfolio, " + userName + "!";
+        }
+    </script>
+</body>
+
+</html>
