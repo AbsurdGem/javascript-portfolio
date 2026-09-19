@@ -241,6 +241,7 @@
 
           <button type="submit" id="submitButton">Submit</button>
         </form>
+        <p id="formStatus" role="status"></p>
       </section>
     </main>
 
@@ -286,6 +287,24 @@
         universityResources.style.display = "none";
         personalProjects.style.display = "block";
       }
+      // Week 3: Dynamically create a new project paragraph
+const projectsSection = document.getElementById("projects");
+
+const newProject = document.createElement("p");
+
+newProject.textContent =
+  "Current Project: Text-Tone Translator - An application that translates text into Corporate Polite, Boundary-Setter, and Casual/No-Drama tones.";
+
+projectsSection.appendChild(newProject);
+// Week 3: Select and modify two existing DOM elements
+
+// Select the existing Projects heading and update its text.
+const projectsHeading = document.querySelector("#projects h2");
+projectsHeading.textContent = "My Software Development Projects";
+
+// Select the existing Projects section and change its border.
+const projectContainer = document.getElementById("projects");
+projectContainer.style.border = "3px solid steelblue";
 
       // Dark mode toggle
       const darkModeToggle = document.getElementById("darkModeToggle");
@@ -297,20 +316,26 @@
         );
       });
 
-      // Contact form submit event
-      const submitButton = document.getElementById("submitButton");
+      // Week 3: Display a timed confirmation for contact form submissions
+const contactForm = document.getElementById("contactForm");
+const formStatus = document.getElementById("formStatus");
 
-      submitButton.addEventListener("click", function (event) {
-        event.preventDefault();
+contactForm.addEventListener("submit", function (event) {
+  // Prevent the form from refreshing the webpage.
+  event.preventDefault();
 
-        const senderName = document.getElementById("senderName").value;
+  // Retrieve the user's name.
+  const senderName = document.getElementById("senderName").value;
 
-        alert(
-          "Thank you, " +
-            senderName +
-            ", your message has been sent!"
-        );
-      });
+  // Display a loading message.
+  formStatus.textContent = "Sending message...";
+
+  // Replace the loading message after 2.5 seconds.
+  setTimeout(function () {
+    formStatus.textContent =
+      "Thank you, " + senderName + "! Message sent successfully!";
+  }, 2500);
+});
     </script>
   </body>
 </html>
