@@ -347,15 +347,28 @@ projectsHeading.textContent = "My Software Development Projects";
 const projectContainer = document.getElementById("projects");
 projectContainer.style.border = "3px solid steelblue";
 
-      // Dark mode toggle
-      const darkModeToggle = document.getElementById("darkModeToggle");
+      // Week 4: Restore saved dark mode preference
+const darkModeToggle = document.getElementById("darkModeToggle");
+const savedDarkMode = localStorage.getItem("darkMode");
 
-      darkModeToggle.addEventListener("change", function () {
-        document.body.classList.toggle(
-          "dark-mode",
-          darkModeToggle.checked
-        );
-      });
+if (savedDarkMode === "enabled") {
+  document.body.classList.add("dark-mode");
+  darkModeToggle.checked = true;
+}
+
+// Save the dark mode preference when the toggle changes
+darkModeToggle.addEventListener("change", function () {
+  document.body.classList.toggle(
+    "dark-mode",
+    darkModeToggle.checked
+  );
+
+  if (darkModeToggle.checked) {
+    localStorage.setItem("darkMode", "enabled");
+  } else {
+    localStorage.setItem("darkMode", "disabled");
+  }
+});
 
       // Week 3: Display a timed confirmation for contact form submissions
 const contactForm = document.getElementById("contactForm");
