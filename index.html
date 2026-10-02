@@ -150,106 +150,14 @@
           </p>
         </div>
 
-        <!-- Personal Projects -->
-        <div id="personalProjects">
-          <h3>Personal Projects</h3>
+     <!-- Projects section -->
+<section id="projects">
+  <h2>Projects</h2>
+  <p>Here are a few projects I have worked on:</p>
 
-          <div class="featured-projects">
-            <div>
-              <a
-                href="https://github.com/AbsurdGem/Heart-Disease-Risk-Prediction"
-                target="_blank"
-              >
-                <img
-                  src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-                  alt="Heart Disease Risk Prediction project"
-                  width="100"
-                />
-              </a>
-              <p>Heart Disease Risk Prediction</p>
-            </div>
-
-            <div>
-              <a
-                href="https://github.com/AbsurdGem/StudySprint"
-                target="_blank"
-              >
-                <img
-                  src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-                  alt="StudySprint project"
-                  width="100"
-                />
-              </a>
-              <p>StudySprint</p>
-            </div>
-
-            <div>
-              <a
-                href="https://github.com/AbsurdGem/RolodexContactManager"
-                target="_blank"
-              >
-                <img
-                  src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-                  alt="Rolodex Contact Manager project"
-                  width="100"
-                />
-              </a>
-              <p>Rolodex Contact Manager</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Projects section -->
-      <section id="projects">
-        <h2>Projects</h2>
-        <p>Here are a few projects I have worked on:</p>
-
-        <div class="project">
-          <h3>
-            <a
-              href="https://github.com/AbsurdGem/Heart-Disease-Risk-Prediction"
-              target="_blank"
-            >
-              Heart Disease Risk Prediction
-            </a>
-          </h3>
-          <p>
-            A machine learning project focused on predicting heart disease risk.
-          </p>
-        </div>
-
-        <div class="project">
-          <h3>
-            <a
-              href="https://github.com/AbsurdGem/StudySprint"
-              target="_blank"
-            >
-              StudySprint Mobile Application
-            </a>
-          </h3>
-          <p>
-            A mobile application project designed to support studying and
-            productivity.
-          </p>
-        </div>
-
-        <div class="project">
-          <h3>
-            <a
-              href="https://github.com/AbsurdGem/RolodexContactManager"
-              target="_blank"
-            >
-              Rolodex Contact Manager
-            </a>
-          </h3>
-          <p>
-            A contact management application for storing and organizing contact
-            information.
-          </p>
-        </div>
-      </section>
-
+  <!-- Week 5: JavaScript dynamically renders project objects here -->
+  <div id="projectList"></div>
+</section>
       <!-- Contact section -->
       <section id="contact">
         <h2>Contact</h2>
@@ -294,7 +202,89 @@ const closeModalButton = document.getElementById("closeModal");
 closeModalButton.addEventListener("click", function () {
   welcomeModal.style.display = "none";
 });
+// Week 5: Create project objects for dynamic portfolio content
+const project1 = {
+  title: "Heart Disease Risk Prediction",
+  summary:
+    "A machine learning project focused on predicting heart disease risk.",
+  image:
+    "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+  repository:
+    "https://github.com/AbsurdGem/Heart-Disease-Risk-Prediction"
+};
 
+const project2 = {
+  title: "StudySprint Mobile Application",
+  summary:
+    "A mobile application project designed to support studying and productivity.",
+  image:
+    "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+  repository: "https://github.com/AbsurdGem/StudySprint"
+};
+
+const project3 = {
+  title: "Rolodex Contact Manager",
+  summary:
+    "A contact management application for storing and organizing contact information.",
+  image:
+    "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+  repository: "https://github.com/AbsurdGem/RolodexContactManager"
+};
+
+// Store the project objects in an array
+const projectData = [project1, project2, project3];
+// Week 5: Store and retrieve project data using sessionStorage
+let storedProjects = sessionStorage.getItem("portfolioProjects");
+
+if (storedProjects === null) {
+  // Convert the project array to a JSON string and store it
+  sessionStorage.setItem(
+    "portfolioProjects",
+    JSON.stringify(projectData)
+  );
+
+  storedProjects = sessionStorage.getItem("portfolioProjects");
+}
+
+// Convert the stored JSON string back into a JavaScript array
+const savedProjects = JSON.parse(storedProjects);
+// Week 5: Dynamically render the stored projects on the page
+const projectList = document.getElementById("projectList");
+
+savedProjects.forEach(function (project) {
+  // Create a container for each project
+  const projectCard = document.createElement("div");
+  projectCard.className = "project";
+
+  // Create and add the project title
+  const projectTitle = document.createElement("h3");
+  projectTitle.textContent = project.title;
+
+  // Create and add the project summary
+  const projectSummary = document.createElement("p");
+  projectSummary.textContent = project.summary;
+
+  // Create and add the project image
+  const projectImage = document.createElement("img");
+  projectImage.src = project.image;
+  projectImage.alt = project.title + " project";
+  projectImage.width = 100;
+
+  // Create the repository link
+  const projectLink = document.createElement("a");
+  projectLink.href = project.repository;
+  projectLink.target = "_blank";
+  projectLink.textContent = "View Repository";
+
+  // Add the created elements to the project container
+  projectCard.appendChild(projectTitle);
+  projectCard.appendChild(projectImage);
+  projectCard.appendChild(projectSummary);
+  projectCard.appendChild(projectLink);
+
+  // Add the completed project to the Projects section
+  projectList.appendChild(projectCard);
+});
       // Create an array of skills and display them using a loop
       const skills = [
         "HTML",
@@ -313,30 +303,6 @@ closeModalButton.addEventListener("click", function () {
         listItem.textContent = skill;
         skillsList.appendChild(listItem);
       });
-
-      // Determine which Featured Content sections should be displayed
-      const projects = document.querySelectorAll("#projects .project");
-      const universityResources =
-        document.getElementById("universityResources");
-      const personalProjects =
-        document.getElementById("personalProjects");
-
-      if (projects.length < 3) {
-        universityResources.style.display = "block";
-        personalProjects.style.display = "block";
-      } else {
-        universityResources.style.display = "none";
-        personalProjects.style.display = "block";
-      }
-      // Week 3: Dynamically create a new project paragraph
-const projectsSection = document.getElementById("projects");
-
-const newProject = document.createElement("p");
-
-newProject.textContent =
-  "Current Project: Text-Tone Translator - An application that translates text into Corporate Polite, Boundary-Setter, and Casual/No-Drama tones.";
-
-projectsSection.appendChild(newProject);
 // Week 3: Select and modify two existing DOM elements
 
 // Select the existing Projects heading and update its text.
