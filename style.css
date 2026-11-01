@@ -1,19 +1,28 @@
 
-      body {
+      
+    /*Portfolio theme colors */
+    :root {
+      --bg-primary: #0b1220;
+      --bg-secondary: #152238;
+      --accent-teal: #20c7b7;;
+      --accent-blue: #8cd9ff;
+      --text-primary:#e9f4ff;
+    }
+
+    /*Default dark theme */
+    body {
         font-family: Arial, sans-serif;
-        background-color: white;
-        color: black;
-        margin: 20px;
-        transition:
-          background-color 0.3s,
-          color 0.3s;
-      }
-
-      body.dark-mode {
-        background-color: #1e1e1e;
-        color: white;
-      }
-
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        margin: 0;
+        line-height: 1.6;
+        transition: background-color 0.3s, color 0.3s;  
+    }
+    /* Compatibility with existing dark mode toggle */
+    body.dark-mode {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+    }
       nav {
         margin-bottom: 20px;
       }
@@ -48,31 +57,134 @@
         gap: 30px;
         flex-wrap: wrap;
       }
-      
-.modal {
+      /* Hero section */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(
+    135deg,
+    #0b1220 0%,
+    #152238 100%
+  );
+  border-bottom: 2px solid var(--accent-teal);
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  color: var(--text-primary);
+  margin: 0 0 15px;
+  letter-spacing: 1px;
+}
+
+.hero-title {
+  font-size: 1.3rem;
+  color: var(--accent-teal);
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  color: #b8c9dc;
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+/* Modern portfolio navigation */
+.main-nav {
   display: flex;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 20px;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--accent-teal);
 }
 
-.modal-content {
-  background-color: white;
-  color: black;
-  padding: 25px;
-  border: 2px solid #666;
-  text-align: center;
-  max-width: 400px;
+.main-nav a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
-.modal-content button {
-  margin-top: 10px;
-  padding: 8px 16px;
+.main-nav a:hover,
+.main-nav a:focus-visible {
+  color: var(--accent-teal);
 }
-    
+
+.main-nav a:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 5px;
+}
+/* About Me section */
+#about {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 40px;
+  background-color: var(--bg-secondary);
+  border: 1px solid #27445a;
+  border-radius: 16px;
+}
+
+#about h2 {
+  color: var(--accent-teal);
+  font-size: 2rem;
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.about-photo {
+  flex: 0 0 240px;
+  min-height: 280px;
+  background-color: var(--bg-primary);
+  border: 2px solid var(--accent-teal);
+  border-radius: 12px;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text p {
+  line-height: 1.9;
+  color: var(--text-primary);
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  #about {
+    padding: 24px;
+  }
+
+  .about-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .about-photo {
+    flex: none;
+    width: min(100%, 240px);
+    min-height: 280px;
+    align-self: center;
+  }
+}
+/* Professional profile photo */
+.profile-image {
+  display: block;
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
+
+.about-photo {
+  overflow: hidden;
+}
