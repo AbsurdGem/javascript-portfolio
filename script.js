@@ -8,38 +8,44 @@ const project1 = {
     "https://github.com/AbsurdGem/Heart-Disease-Risk-Prediction"
 };
 
+
 const project2 = {
-  title: "StudySprint Mobile Application",
+  title: "MachinePulse AI",
   summary:
-    "A mobile application project designed to support studying and productivity.",
-  image:
-    "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
-  repository: "https://github.com/AbsurdGem/StudySprint"
+    "A machine learning application for manufacturing analytics, built with Python, scikit-learn, and Streamlit.",
+  image: "images/machinepulse.png",
+  repository: "https://github.com/AbsurdGem/MachinePulse-AI.git" 
 };
 
 const project3 = {
-  title: "Rolodex Contact Manager",
+  title: "Text-Tone Translator",
   summary:
-    "A contact management application for storing and organizing contact information.",
-  image:
-    "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
-  repository: "https://github.com/AbsurdGem/RolodexContactManager"
+    "An Android application built with Kotlin that uses AI to rewrite text in different tones through a Python API service.",
+  image: "images/text-tone-translator.png",
+  repository: "https://github.com/AbsurdGem/TextToneTranslator.git" 
 };
+
 
 // Store the project objects in an array
 const projectData = [project1, project2, project3];
 
 let storedProjects = sessionStorage.getItem("portfolioProjects");
 
-if (storedProjects === null) {
-  // Convert the project array to a JSON string and store it
-  sessionStorage.setItem(
-    "portfolioProjects",
-    JSON.stringify(projectData)
-  );
+
+// Store the current project data
+sessionStorage.setItem(
+  "portfolioProjects",
+  JSON.stringify(projectData)
+);
+
+// Retrieve the current projects
+const savedProjects = JSON.parse(
+  sessionStorage.getItem("portfolioProjects")
+);
+
 
   storedProjects = sessionStorage.getItem("portfolioProjects");
-}
+
 
 // Convert the stored JSON string back into a JavaScript array
 const savedProjects = JSON.parse(storedProjects);
@@ -63,7 +69,7 @@ savedProjects.forEach(function (project) {
   const projectImage = document.createElement("img");
   projectImage.src = project.image;
   projectImage.alt = project.title + " project";
-  projectImage.width = 100;
+ projectImage.className = "project-image";
 
   // Create the repository link
   const projectLink = document.createElement("a");
@@ -129,25 +135,44 @@ darkModeToggle.addEventListener("change", function () {
   } else {
     localStorage.setItem("darkMode", "disabled");
   }
-});
 
-      // Display a timed confirmation for contact form submissions
 const contactForm = document.getElementById("contactForm");
 const formStatus = document.getElementById("formStatus");
+const submitButton = document.getElementById("submitButton");
 
-contactForm.addEventListener("submit", function (event) {
-  // Prevent the form from refreshing the webpage.
+contactForm.addEventListener("submit", async function (event) {
   event.preventDefault();
 
-  // Retrieve the user's name.
   const senderName = document.getElementById("senderName").value;
 
-  // Display a loading message.
+  submitButton.disabled = true;
   formStatus.textContent = "Sending message...";
 
-  // Replace the loading message after 2.5 seconds.
-  setTimeout(function () {
+  try {
+    const response = await fetch(contactForm.action, {
+      method: "POST",
+      body: new FormData(contactForm),
+      headers: {
+        Accept: "application/json"
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error("Message failed to send");
+    }
+
     formStatus.textContent =
-      "Thank you, " + senderName + "! Message sent successfully!";
-  }, 2500);
+      "Thank you, " + senderName + "! Your message was sent successfully!";
+
+    contactForm.reset();
+
+  } catch (error) {
+    formStatus.textContent =
+      "Oops! Something went wrong. Please try again.";
+
+    console.error("Form submission error:", error);
+
+  } finally {
+    submitButton.disabled = false;
+  }
 });

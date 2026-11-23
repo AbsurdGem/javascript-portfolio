@@ -188,3 +188,12 @@
 .about-photo {
   overflow: hidden;
 }
+.project-image {
+  width: 100%;
+  max-width: 420px;
+  height: 240px;
+  object-fit: contain;
+  display: block;
+  margin: 15px auto;
+  border-radius: 8px;
+}
