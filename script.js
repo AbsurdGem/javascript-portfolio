@@ -32,23 +32,16 @@ const projectData = [project1, project2, project3];
 let storedProjects = sessionStorage.getItem("portfolioProjects");
 
 
-// Store the current project data
+
 sessionStorage.setItem(
   "portfolioProjects",
   JSON.stringify(projectData)
 );
 
-// Retrieve the current projects
 const savedProjects = JSON.parse(
   sessionStorage.getItem("portfolioProjects")
 );
 
-
-  storedProjects = sessionStorage.getItem("portfolioProjects");
-
-
-// Convert the stored JSON string back into a JavaScript array
-const savedProjects = JSON.parse(storedProjects);
 //  Dynamically render the stored projects on the page
 const projectList = document.getElementById("projectList");
 
@@ -135,7 +128,7 @@ darkModeToggle.addEventListener("change", function () {
   } else {
     localStorage.setItem("darkMode", "disabled");
   }
-
+});
 const contactForm = document.getElementById("contactForm");
 const formStatus = document.getElementById("formStatus");
 const submitButton = document.getElementById("submitButton");
