@@ -21,7 +21,7 @@ const project3 = {
   title: "Text-Tone Translator",
   summary:
     "An Android application built with Kotlin that uses AI to rewrite text in different tones through a Python API service.",
-  image: "images/text-tone-translator.png",
+  image: "images/text_tone_translator.png",
   repository: "https://github.com/AbsurdGem/TextToneTranslator.git" 
 };
 
