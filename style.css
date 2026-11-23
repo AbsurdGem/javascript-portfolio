@@ -197,3 +197,20 @@
   margin: 15px auto;
   border-radius: 8px;
 }
+
+.project-button {
+  display: inline-block;
+  background-color: #24c5c0;
+  color: #101a2b;
+  padding: 10px 16px;
+  margin: 8px 6px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.project-button:hover {
+  background-color: #a9d0ff;
+}
+

@@ -15,6 +15,8 @@ const project2 = {
     "A machine learning application for manufacturing analytics, built with Python, scikit-learn, and Streamlit.",
   image: "images/machinepulse.png",
   repository: "https://github.com/AbsurdGem/MachinePulse-AI.git" 
+    video: "https://youtu.be/tPoDYH-R9Mw",
+  demo: "https://machinepulse-ai.streamlit.app/"
 };
 
 const project3 = {
@@ -23,6 +25,7 @@ const project3 = {
     "An Android application built with Kotlin that uses AI to rewrite text in different tones through a Python API service.",
   image: "images/text_tone_translator.png",
   repository: "https://github.com/AbsurdGem/TextToneTranslator.git" 
+  video: "https://youtu.be/mYb3SvJwOSQ"
 };
 
 
@@ -78,6 +81,31 @@ savedProjects.forEach(function (project) {
 
   // Add the completed project to the Projects section
   projectList.appendChild(projectCard);
+
+// Add a YouTube demonstration link
+if (project.video) {
+  const videoLink = document.createElement("a");
+  videoLink.href = project.video;
+  videoLink.target = "_blank";
+  videoLink.rel = "noopener noreferrer";
+  videoLink.textContent = "Watch Demo";
+  videoLink.className = "project-button";
+
+  projectCard.appendChild(videoLink);
+}
+
+// Add a live application link
+if (project.demo) {
+  const demoLink = document.createElement("a");
+  demoLink.href = project.demo;
+  demoLink.target = "_blank";
+  demoLink.rel = "noopener noreferrer";
+  demoLink.textContent = "Try Live App";
+  demoLink.className = "project-button";
+
+  projectCard.appendChild(demoLink);
+}
+
 });
       // Create an array of skills and display them using a loop
       const skills = [
