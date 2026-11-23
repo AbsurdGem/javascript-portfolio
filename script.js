@@ -14,7 +14,7 @@ const project2 = {
   summary:
     "A machine learning application for manufacturing analytics, built with Python, scikit-learn, and Streamlit.",
   image: "images/machinepulse.png",
-  repository: "https://github.com/AbsurdGem/MachinePulse-AI.git" 
+  repository: "https://github.com/AbsurdGem/MachinePulse-AI.git", 
     video: "https://youtu.be/tPoDYH-R9Mw",
   demo: "https://machinepulse-ai.streamlit.app/"
 };
@@ -24,7 +24,7 @@ const project3 = {
   summary:
     "An Android application built with Kotlin that uses AI to rewrite text in different tones through a Python API service.",
   image: "images/text_tone_translator.png",
-  repository: "https://github.com/AbsurdGem/TextToneTranslator.git" 
+  repository: "https://github.com/AbsurdGem/TextToneTranslator.git" ,
   video: "https://youtu.be/mYb3SvJwOSQ"
 };
 
